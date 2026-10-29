@@ -55,7 +55,9 @@ jobs:
       - name: Set lastVerified for the items whose pages were fetched and quotes found
         env:
           SINCE: ${{ steps.start.outputs.since }}
-        run: node scripts/review.ts bump --since "$SINCE"
+        run: |
+          git show HEAD:v1/rules.json > "$RUNNER_TEMP/base.json"
+          node scripts/review.ts bump --since "$SINCE" --base "$RUNNER_TEMP/base.json"
 
       - name: Test the scripts
         id: tests
@@ -65,9 +67,7 @@ jobs:
       - name: Check against the schema and main
         id: schema
         continue-on-error: true
-        run: |
-          git show HEAD:v1/rules.json > "$RUNNER_TEMP/base.json"
-          node scripts/check.ts v1/rules.json "$RUNNER_TEMP/base.json"
+        run: node scripts/check.ts v1/rules.json "$RUNNER_TEMP/base.json"
 
       # Free; shown so the free plan's 1,000 credits a month can be watched.
       - name: Count the Firecrawl credits left

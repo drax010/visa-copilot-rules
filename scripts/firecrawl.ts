@@ -1,6 +1,9 @@
 // Fetches one page through Firecrawl (https://docs.firecrawl.dev/api-reference/endpoint/scrape).
 // The US government pages block plain downloads; Firecrawl's "auto" proxy retries through its
-// enhanced proxies when a site answers 401, 403 or 429. maxAge 0 skips Firecrawl's 2-day cache.
+// enhanced proxies when a site answers 401, 403 or 429. But travel.state.gov often gives the
+// basic proxy a blank page with status 200 (4 of 5 fetches on 2026-10-30), which "auto" doesn't
+// retry, so an almost empty answer is fetched again with "enhanced". maxAge 0 skips Firecrawl's
+// 2-day cache.
 // Web pages come back as raw HTML (Firecrawl's markdown splits sentences, which breaks quote
 // matching); PDFs as markdown, which is their extracted text. 1 credit per page.
 
@@ -16,18 +19,20 @@ type Options = { key: string; fetch?: typeof fetch; sleep?: (ms: number) => Prom
 
 export async function scrape(url: string, { key, fetch = globalThis.fetch, sleep = (ms) => new Promise((r) => setTimeout(r, ms)) }: Options): Promise<string> {
   const pdf = new URL(url).pathname.toLowerCase().endsWith(".pdf");
-  const request = () =>
+  const request = (proxy: string) =>
     fetch(endpoint, {
       method: "POST",
       headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ url, formats: [pdf ? "markdown" : "rawHtml"], proxy: "auto", maxAge: 0, timeout: 120000 }),
+      body: JSON.stringify({ url, formats: [pdf ? "markdown" : "rawHtml"], proxy, maxAge: 0, timeout: 120000 }),
       signal: AbortSignal.timeout(150000),
     });
   const fail = (message: string) => new Error(message.replaceAll(key, "[key]"));
 
-  // A busy API (429, 5xx) or an almost empty page gets one more try; anything else fails at once.
+  // A busy API (429, 5xx) gets one more try through the same proxy, an almost empty page one more
+  // through the enhanced proxy; anything else fails at once.
+  let proxy = "auto";
   for (let attempt = 1; ; attempt++) {
-    const res = await request();
+    const res = await request(proxy);
     if ((res.status === 429 || res.status >= 500) && attempt === 1) {
       await sleep(10000);
       continue;
@@ -44,9 +49,11 @@ export async function scrape(url: string, { key, fetch = globalThis.fetch, sleep
     const text = typeof content !== "string" ? "" : pdf ? content.trim() : htmlToText(content);
     if (text.length >= minText) return text;
     if (attempt === 1) {
+      proxy = "enhanced";
       await sleep(10000);
       continue;
     }
-    throw fail(`${url} came back almost empty twice (${text.length} characters of text)`);
+    const size = typeof content === "string" ? content.length : 0;
+    throw fail(`${url} came back almost empty twice (${text.length} characters of text; last answer: status ${meta.statusCode}, ${size} bytes of ${pdf ? "markdown" : "HTML"}, proxy ${meta.proxyUsed ?? "unknown"})`);
   }
 }

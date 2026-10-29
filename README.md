@@ -25,7 +25,8 @@ v1 covers two corridors, for Indian passports only: US B-1/B-2 visitor visa and 
 
 - `npm run snapshot` refreshes every cited page. Add page addresses after it (`npm run snapshot -- <url> <url>`) to refresh only those.
 - Firecrawl needs an API key: set `FIRECRAWL_API_KEY`, or `FIRECRAWL_KEY_FILE` to the path of a file holding it. Keep the file outside this repo; the key is never printed. Each page costs 1 credit, and the script waits 7 seconds between pages (the free plan allows 10 a minute).
-- A page that fails (an error, a block page, an almost empty answer, or a copy under half the size of its last snapshot) keeps its previous snapshot, and the run exits 1.
+- An almost empty answer is fetched once more through Firecrawl's enhanced proxy: travel.state.gov often gives the basic proxy a blank page with status 200, which `proxy: "auto"` doesn't retry.
+- A page that fails (an error, a block page, an answer still almost empty, or a copy under half the size of its last snapshot) keeps its previous snapshot, and the run exits 1.
 - If Firecrawl can't fetch a page, save it from Chrome into `inbox/` and run `npm run snapshot` again (see `inbox/README.md`), or import it directly: `node scripts/snapshot.ts --from <saved .html or .txt> <url> [method]`.
 - `npm run verify` checks every quote against the snapshots. Whitespace is collapsed and nothing else changes; for PDFs, whitespace is ignored, because PDF text loses spaces at line wraps.
 - `npm test` runs the scripts' tests.
@@ -58,7 +59,7 @@ The run ends red, and GitHub emails you, if a page, a quote or a check failed. G
 Before merging:
 
 - **Read every changed page** in Files changed. A page can change what an item should say even when its quote is still there; then fix the item and bump its `revision`.
-- **A page that couldn't be fetched:** check out the branch, save the page into `inbox/`, then run `npm run snapshot`, then `node scripts/review.ts bump --since <a time before the import>`, and push.
+- **A page that couldn't be fetched:** check out the branch, save the page into `inbox/`, then run `npm run snapshot`, then `git show main:v1/rules.json > base.json` and `node scripts/review.ts bump --since <a time before the import> --base base.json`, and push.
 - **A missing quote:** run `/redraft-rules` in Claude Code on the branch, or fix the item by hand, then push.
 - **The US passport item:** also check the State Department's 9 FAM 403.9-3(b)(2)(f), which CBP's bulletin names as the most up-to-date list of exempt countries.
 

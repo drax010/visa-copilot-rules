@@ -1,9 +1,10 @@
 // The monthly review's bookkeeping, run by .github/workflows/monthly-review.yml after
 // snapshot.ts has fetched every page again:
 //
-//   node scripts/review.ts bump --since <iso time>
+//   node scripts/review.ts bump --since <iso time> --base <main's rules.json>
 //       sets lastVerified to today for every item whose quote was found on a page fetched
-//       since that time, and gives v1/rules.json a new version if anything changed
+//       since that time, and if anything changed gives v1/rules.json the version one step
+//       past main's
 //   node scripts/review.ts report --since <iso time> --base <main's rules.json> --out <file>
 //       [--checks "Tests=success,Quotes=failure"] [--credits <n>] [--run <url>]
 //       writes the pull request body
@@ -32,8 +33,9 @@ export function refreshedPages(index: Record<string, IndexEntry>, since: string)
 }
 
 // Returns a copy; `verified` lists every item checked against a fresh page, `changed` whether
-// any date moved (and so the version).
-export function bumpVerified(rules: RulesFile, problems: Problem[], refreshed: Set<string>, today: string) {
+// any date moved (and so the version). The new version is one step past `baseVersion`, main's,
+// so bumping again on a review branch doesn't move it a second time.
+export function bumpVerified(rules: RulesFile, problems: Problem[], refreshed: Set<string>, today: string, baseVersion = rules.version) {
   const next = structuredClone(rules);
   const missing = new Set(problems.map((p) => `${p.corridor}/${p.item}`));
   const verified: string[] = [];
@@ -48,7 +50,7 @@ export function bumpVerified(rules: RulesFile, problems: Problem[], refreshed: S
       }
     }
   }
-  if (changed) next.version = nextVersion(rules.version, today);
+  if (changed) next.version = nextVersion(baseVersion, today);
   return { rules: next, verified, changed };
 }
 
@@ -72,9 +74,13 @@ const outcomes: Record<string, string> = { success: "Passed", failure: "**Failed
 
 export function reportBody(r: Report): string {
   const version = r.versionBefore === r.versionAfter ? `${r.versionAfter} (unchanged)` : `${r.versionBefore} → ${r.versionAfter}`;
+  const failed = r.notRefreshed.length;
+  const fetched = failed
+    ? `${failed === 1 ? "1 page couldn't" : `${failed} pages couldn't`} be fetched (see below), so ${failed === 1 ? "its quotes were" : "their quotes were"} checked against the old snapshot. Every other cited page was fetched again`
+    : "Every cited page was fetched again";
   return `## Monthly review ${r.month}
 
-Every cited page was fetched again, and every quote was checked word for word against it. Merging this pull request is the sign-off (\`decisions.md\` in the app repo, 2026-10-30).
+${fetched}, and every quote was checked word for word against its page's snapshot. Merging this pull request is the sign-off (\`decisions.md\` in the app repo, 2026-10-30).
 
 - **Re-verified:** ${r.verified} of ${r.total} items; their \`lastVerified\` is now ${r.today}.
 - **Version:** ${version}
@@ -95,13 +101,13 @@ ${r.credits === undefined ? "" : `\nFirecrawl credits left this billing period: 
 const rulesPath = new URL("../v1/rules.json", import.meta.url);
 const today = () => new Date().toLocaleDateString("en-CA"); // YYYY-MM-DD in the local time zone
 
-function review(since: string) {
+function review(since: string, baseVersion: string) {
   // The raw JSON is what gets written back, so the file keeps its layout; the parse checks it.
   const raw: RulesFile = JSON.parse(readFileSync(rulesPath, "utf8"));
   const { problems, total } = verifyQuotes(rulesFileSchema.parse(raw), loadSnapshots());
   const refreshed = refreshedPages(readIndex(), since);
   const cited = [...new Set(raw.corridors.flatMap((c) => c.requirements.map((r) => r.source.url)))].sort();
-  return { raw, problems, total, refreshed, cited, ...bumpVerified(raw, problems, refreshed, today()) };
+  return { raw, problems, total, refreshed, cited, ...bumpVerified(raw, problems, refreshed, today(), baseVersion) };
 }
 
 if (import.meta.main) {
@@ -110,18 +116,18 @@ if (import.meta.main) {
     options: { since: { type: "string" }, base: { type: "string" }, out: { type: "string" }, checks: { type: "string" }, credits: { type: "string" }, run: { type: "string" } },
   });
   const [command] = positionals;
-  if (!values.since || (command !== "bump" && command !== "report") || (command === "report" && (!values.base || !values.out))) {
-    console.log("Usage: node scripts/review.ts bump --since <iso time>");
+  if (!values.since || !values.base || (command !== "bump" && command !== "report") || (command === "report" && !values.out)) {
+    console.log("Usage: node scripts/review.ts bump --since <iso time> --base <main's rules.json>");
     console.log("       node scripts/review.ts report --since <iso time> --base <rules.json> --out <file> [--checks Name=outcome,...] [--credits <n>] [--run <url>]");
     process.exit(2);
   }
-  const r = review(values.since);
+  const base: RulesFile = JSON.parse(readFileSync(values.base, "utf8"));
+  const r = review(values.since, base.version);
 
   if (command === "bump") {
     if (r.changed) writeFileSync(rulesPath, `${JSON.stringify(r.rules, null, 2)}\n`);
     console.log(`${r.verified.length} of ${r.total} items re-verified; version ${r.raw.version}${r.changed ? ` -> ${r.rules.version}` : " (unchanged)"}.`);
   } else {
-    const base: RulesFile = JSON.parse(readFileSync(values.base!, "utf8"));
     const status = execFileSync("git", ["status", "--porcelain", "--untracked-files=all", "--", "snapshots/"], { encoding: "utf8" });
     const changedPages = status
       .split("\n")
