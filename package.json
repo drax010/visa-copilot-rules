@@ -4,7 +4,10 @@
   "type": "module",
   "description": "Visa document checklists for Visa Copilot, each item sourced from an official page.",
   "scripts": {
-    "check": "node scripts/check.ts v1/rules.json"
+    "check": "node scripts/check.ts v1/rules.json",
+    "verify": "node scripts/verify-quotes.ts v1/rules.json",
+    "snapshot": "node scripts/snapshot.ts",
+    "test": "node --test \"scripts/*.test.ts\""
   },
   "engines": {
     "node": ">=24"
