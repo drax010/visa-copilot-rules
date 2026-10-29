@@ -19,6 +19,7 @@ v1 covers two corridors, for Indian passports only: US B-1/B-2 visitor visa and 
 - `scripts/verify-quotes.ts`: fails unless every `sourceQuote` is found word for word in the snapshot of its `source.url`. CI runs it on every pull request, so a quote that isn't on the page can't merge.
 - `scripts/snapshot.ts` and `sources.json`: fetch the snapshots. GOV.UK pages come from GOV.UK's content API; the US government pages block plain downloads, so they come through Firecrawl (`sources.json` names each host's method).
 - `inbox/`: where to save a page by hand when Firecrawl can't fetch it.
+- `.github/workflows/monthly-review.yml` and `scripts/review.ts`: the monthly review (see below).
 
 ## Snapshots and the quote check
 
@@ -45,7 +46,25 @@ v1 covers two corridors, for Indian passports only: US B-1/B-2 visitor visa and 
 
 ## Monthly review
 
-Once a month, open every `source.url`, check that its quote is still there and still says what the item claims, then update `lastVerified` (and `revision` if the meaning changed) in one pull request. For the US passport item, also check the State Department's 9 FAM 403.9-3(b)(2)(f), which CBP's bulletin names as the most up-to-date list of exempt countries.
+`.github/workflows/monthly-review.yml` runs at 06:00 UTC on the 1st of each month. To run it now, open Actions, pick "Monthly review", then "Run workflow". It:
+
+1. fetches every cited page again (about 6 Firecrawl credits) and checks every quote;
+2. sets `lastVerified` to today (India's date) for each item whose page was fetched and whose quote was found, and gives the file a new `version` (`scripts/review.ts`). An item whose page couldn't be fetched keeps its old date, because nobody checked it against the live page;
+3. runs the same checks as CI;
+4. opens a pull request, "Monthly review YYYY-MM". Its body lists pages that couldn't be fetched, items whose quote is missing, pages whose text changed, the check results and the Firecrawl credits left. If a quote is missing, the pull request is a draft.
+
+The run ends red, and GitHub emails you, if a page, a quote or a check failed. GitHub doesn't run `check.yml` on a pull request opened by a workflow, so the checks in the body are the ones to read; any later push to the branch runs `check.yml` as usual.
+
+Before merging:
+
+- **Read every changed page** in Files changed. A page can change what an item should say even when its quote is still there; then fix the item and bump its `revision`.
+- **A page that couldn't be fetched:** check out the branch, save the page into `inbox/`, then run `npm run snapshot`, then `node scripts/review.ts bump --since <a time before the import>`, and push.
+- **A missing quote:** run `/redraft-rules` in Claude Code on the branch, or fix the item by hand, then push.
+- **The US passport item:** also check the State Department's 9 FAM 403.9-3(b)(2)(f), which CBP's bulletin names as the most up-to-date list of exempt countries.
+
+Merging is the sign-off. Merge each month's pull request: GitHub turns off scheduled workflows in a public repo after 60 days with no activity (it emails first), and the merge counts as activity.
+
+The workflow reads the Firecrawl key from the repo secret `FIRECRAWL_API_KEY`. It opens pull requests only because the repo setting "Allow GitHub Actions to create and approve pull requests" is on (Settings → Actions → General).
 
 Requires Node 24 or later, which runs the `.ts` files directly.
 
