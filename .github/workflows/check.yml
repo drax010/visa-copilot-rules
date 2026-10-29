@@ -1,0 +1,45 @@
+# Checks v1/rules.json on every pull request and every push to main.
+# Pull requests are also compared with the base branch: version must change, and a
+# changed detail without a revision bump gets a warning.
+name: Check rules
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+# A newer push to the same branch cancels the older run.
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - run: npm ci
+
+      - name: Check against the schema
+        if: github.event_name == 'push'
+        run: node scripts/check.ts v1/rules.json
+
+      - name: Check against the schema and the base branch
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          git show "origin/$BASE_REF:v1/rules.json" > "$RUNNER_TEMP/base.json"
+          node scripts/check.ts v1/rules.json "$RUNNER_TEMP/base.json"

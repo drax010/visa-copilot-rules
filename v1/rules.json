@@ -1,0 +1,860 @@
+{
+  "schemaVersion": 1,
+  "version": "2026.10.30-1",
+  "corridors": [
+    {
+      "id": "us-b1b2",
+      "destination": "US",
+      "visaType": "B-1/B-2 visitor",
+      "nationalities": [
+        "IN"
+      ],
+      "officialUrl": "https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html",
+      "requirements": [
+        {
+          "id": "us-b1b2-visa-needed",
+          "revision": 1,
+          "category": "forms",
+          "title": "Visa needed before travel",
+          "detail": "The US Embassy in India says a citizen of a foreign country generally needs a US visa, placed in their passport, to enter the United States.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Visas, U.S. Embassy & Consulates in India",
+            "url": "https://in.usembassy.gov/visas/"
+          },
+          "sourceQuote": "A citizen of a foreign country who seeks to enter the United States generally must first obtain a U.S. visa, which is placed in the traveler’s passport.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-permitted-purpose",
+          "revision": 1,
+          "category": "purpose",
+          "title": "A business or tourism reason for the visit",
+          "detail": "The State Department describes visitor visas as being for temporary visits for business (B-1), tourism (B-2), or both.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Visitor Visa, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html"
+          },
+          "sourceQuote": "Visitor visas are nonimmigrant visas for persons who want to enter the United States temporarily for business (B-1 visa), for tourism (B-2 visa), or for a combination of both purposes (B-1/B-2 visa).",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-no-work",
+          "revision": 1,
+          "category": "purpose",
+          "title": "No work or employment in the US",
+          "detail": "The State Department says a person on a visitor visa is not permitted to accept employment or work in the United States.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Visitor Visa, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html"
+          },
+          "sourceQuote": "An individual on a visitor visa (B1/B2) is not permitted to accept employment or work in the United States.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-passport",
+          "revision": 2,
+          "category": "identity",
+          "title": "Passport valid for the intended stay",
+          "detail": "The State Department says a passport must be valid six months beyond the stay unless a country-specific agreement exempts it. A December 2025 US Customs and Border Protection bulletin lists India among the exempt countries, so an Indian passport needs to be valid only for the intended period of stay. The bulletin points to the State Department's 9 FAM 403.9-3(b)(2)(f) for the most up-to-date list.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Six-Month Passport Validity Update, U.S. Customs and Border Protection",
+            "url": "https://www.cbp.gov/sites/default/files/2025-12/Six-Month%20Passport%20Validity%20Update%2020251218.pdf"
+          },
+          "sourceQuote": "Citizens of the countries listed below are exempt from the six month rule and need only have a passport valid for their intended period of stay.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-30"
+        },
+        {
+          "id": "us-b1b2-photo-upload",
+          "revision": 1,
+          "category": "identity",
+          "title": "Digital photo uploaded with the DS-160",
+          "detail": "The State Department says the DS-160 asks for a digital photo to be uploaded as part of the form.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Photo Requirements, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos.html"
+          },
+          "sourceQuote": "If you are applying for a nonimmigrant visa by filling out the DS-160 or DS-1648 online form, the form will instruct you to upload your digital image as part of completing the online visa application form.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-photo-recent",
+          "revision": 1,
+          "category": "identity",
+          "title": "Photo taken in the last 6 months",
+          "detail": "The State Department says the photo must be taken within the last 6 months, so it shows your current appearance.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Photo Requirements, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos.html"
+          },
+          "sourceQuote": "Taken within the last 6 months to reflect your current appearance",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-photo-background",
+          "revision": 1,
+          "category": "identity",
+          "title": "Plain white or off-white photo background",
+          "detail": "The State Department says the photo must be taken in front of a plain white or off-white background.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Photo Requirements, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos.html"
+          },
+          "sourceQuote": "Taken in front of a plain white or off-white background",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-photo-no-glasses",
+          "revision": 1,
+          "category": "identity",
+          "title": "No glasses in the photo",
+          "detail": "The State Department says glasses are no longer allowed in new visa photos, apart from rare medical cases backed by a signed medical statement.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Photo Requirements, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos.html"
+          },
+          "sourceQuote": "Eyeglasses are no longer allowed in new visa photos, except in rare circumstances when eyeglasses cannot be removed for medical reasons; e.g., the applicant has recently had ocular surgery and the eyeglasses are necessary to protect the applicant's eyes.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-ds160",
+          "revision": 1,
+          "category": "forms",
+          "title": "DS-160 online application",
+          "detail": "The State Department says every nonimmigrant visa applicant submits a completed DS-160 online application.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "DS-160: Online Nonimmigrant Visa Application, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/forms/ds-160-online-nonimmigrant-visa-application.html"
+          },
+          "sourceQuote": "Visa applicants must submit a completed DS-160, Online Nonimmigrant Visa Application for all nonimmigrant visa categories, including applicants applying for K visas.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-ds160-barcode",
+          "revision": 1,
+          "category": "forms",
+          "title": "DS-160 barcode page, printed",
+          "detail": "After completing the DS-160, the State Department lists printing and keeping its barcode page. The full application does not need printing.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "DS-160: Online Nonimmigrant Visa Application, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/forms/ds-160-online-nonimmigrant-visa-application.html"
+          },
+          "sourceQuote": "Print and keep the DS-160 barcode page.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-separate-application",
+          "revision": 1,
+          "category": "forms",
+          "title": "One application per person",
+          "detail": "The State Department says each person who needs a visa submits a separate application, including family members listed in the same passport.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Visitor Visa, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html"
+          },
+          "sourceQuote": "Each individual who needs a visa must submit a separate application, including any family members listed in your passport.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-fee",
+          "revision": 1,
+          "category": "fees",
+          "title": "Visa application fee",
+          "detail": "The State Department lists the application fee for non-petition visas such as the B visitor visa as $185, and says it is non-refundable.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Fees for Visa Services, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/fees/fees-visa-services.html"
+          },
+          "sourceQuote": "Non-petition-based nonimmigrant visa (except E): $185.00",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-fee-rupees",
+          "revision": 1,
+          "category": "fees",
+          "title": "Fee in rupees at the consular rate",
+          "detail": "The US Embassy in India sets a consular exchange rate for fees: 98 rupees to the dollar from May 25, 2026.",
+          "mandatory": false,
+          "appliesTo": null,
+          "source": {
+            "title": "Visas, U.S. Embassy & Consulates in India",
+            "url": "https://in.usembassy.gov/visas/"
+          },
+          "sourceQuote": "As of May 25, 2026 the Consular Exchange Rate will change for 1 dollar from 96 Indian rupees to 98 rupees.",
+          "effectiveDate": "2026-05-25",
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-fee-receipt",
+          "revision": 1,
+          "category": "fees",
+          "title": "Fee payment receipt",
+          "detail": "The State Department lists the application fee payment receipt among the documents for the interview, where the fee is paid before it.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Visitor Visa, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html"
+          },
+          "sourceQuote": "Application fee payment receipt, if you are required to pay before your interview.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-additional-documents",
+          "revision": 1,
+          "category": "purpose",
+          "title": "Evidence of purpose, return and funds",
+          "detail": "The State Department says extra documents may be requested, for example evidence of the trip's purpose, the intent to leave the US afterwards, and the ability to pay all the trip's costs.",
+          "mandatory": false,
+          "appliesTo": null,
+          "source": {
+            "title": "Visitor Visa, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html"
+          },
+          "sourceQuote": "Additional documents may be requested to establish if you are qualified.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-funds",
+          "revision": 1,
+          "category": "money",
+          "title": "Ability to pay for the whole trip",
+          "detail": "The State Department lists evidence of the ability to pay all costs of the trip among the documents that may be requested.",
+          "mandatory": false,
+          "appliesTo": null,
+          "source": {
+            "title": "Visitor Visa, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html"
+          },
+          "sourceQuote": "Your ability to pay all costs of the trip.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-sponsor",
+          "revision": 1,
+          "category": "money",
+          "title": "Evidence of who else pays, if anyone",
+          "detail": "The State Department says that if someone else covers some or all of the trip's costs, evidence of that can be shown.",
+          "mandatory": false,
+          "appliesTo": null,
+          "source": {
+            "title": "Visitor Visa, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html"
+          },
+          "sourceQuote": "If you cannot cover all the costs for your trip, you may show evidence that another person will cover some or all costs for your trip.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-ties",
+          "revision": 1,
+          "category": "ties",
+          "title": "Evidence of employment or family ties",
+          "detail": "The State Department says evidence of employment or family ties may be enough to show the trip's purpose and the intent to return home.",
+          "mandatory": false,
+          "appliesTo": null,
+          "source": {
+            "title": "Visitor Visa, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html"
+          },
+          "sourceQuote": "Evidence of your employment and/or your family ties may be sufficient to show the purpose of your trip and your intent to return to your home country.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-invitation-not-needed",
+          "revision": 1,
+          "category": "ties",
+          "title": "Invitation letter not needed",
+          "detail": "The State Department says a letter of invitation or Affidavit of Support is not needed, and is not a factor in the visa decision. Applicants qualify on their ties to their home country.",
+          "mandatory": false,
+          "appliesTo": null,
+          "source": {
+            "title": "Visitor Visa, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html"
+          },
+          "sourceQuote": "A letter of invitation or Affidavit of Support is not needed to apply for a visitor visa.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-apply-early",
+          "revision": 1,
+          "category": "travel",
+          "title": "Interview wait times vary",
+          "detail": "The State Department says interview wait times vary by location, season and visa category, and advises applying early.",
+          "mandatory": false,
+          "appliesTo": null,
+          "source": {
+            "title": "Visitor Visa, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html"
+          },
+          "sourceQuote": "Wait times for interview appointments vary by location, season, and visa category, so you should apply for your visa early.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-no-tickets-yet",
+          "revision": 1,
+          "category": "travel",
+          "title": "No final bookings before the visa",
+          "detail": "The State Department says there is no guarantee of a visa, and advises against final travel plans or tickets until the visa is issued.",
+          "mandatory": false,
+          "appliesTo": null,
+          "source": {
+            "title": "Visitor Visa, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html"
+          },
+          "sourceQuote": "Do not make final travel plans or buy tickets until you have a visa.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-schedule-interview",
+          "revision": 1,
+          "category": "interview",
+          "title": "Book the visa interview yourself",
+          "detail": "The State Department says applicants schedule their own interview appointment after the DS-160; the embassy or consulate does not book it for them.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "DS-160: Online Nonimmigrant Visa Application, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/forms/ds-160-online-nonimmigrant-visa-application.html"
+          },
+          "sourceQuote": "You must schedule a visa interview appointment.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-interview-location",
+          "revision": 1,
+          "category": "interview",
+          "title": "Interview in your country of residence or nationality",
+          "detail": "The US Embassy in India says nonimmigrant visa interviews should be booked at the embassy or a consulate in the applicant's country of residence or nationality.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Visas, U.S. Embassy & Consulates in India",
+            "url": "https://in.usembassy.gov/visas/"
+          },
+          "sourceQuote": "Applicants for U.S. nonimmigrant visas should schedule their visa interview appointments at the U.S. Embassy or Consulate in their country of residence or nationality.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-interview",
+          "revision": 1,
+          "category": "interview",
+          "title": "In-person visa interview",
+          "detail": "The State Department says interviews are generally required, with limited exceptions, and consular officers may require one of any applicant.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Visitor Visa, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html"
+          },
+          "sourceQuote": "Interviews are generally required for visa applicants with certain limited exceptions.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-fingerprints",
+          "revision": 1,
+          "category": "interview",
+          "title": "Digital fingerprint scans",
+          "detail": "The State Department says ink-free digital fingerprint scans are taken as part of the application, usually at the interview.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Visitor Visa, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html"
+          },
+          "sourceQuote": "Ink-free, digital fingerprint scans are taken as part of the application process.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "us-b1b2-photo-print",
+          "revision": 1,
+          "category": "interview",
+          "title": "A printed photo, if the upload fails",
+          "detail": "The State Department says that if the DS-160 photo upload fails, one printed photo in the required format is brought to the interview.",
+          "mandatory": false,
+          "appliesTo": null,
+          "source": {
+            "title": "Visitor Visa, U.S. Department of State",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html"
+          },
+          "sourceQuote": "If the photo upload fails, you must bring one printed photo in the format explained in the Photograph Requirements.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "id": "uk-standard-visitor",
+      "destination": "UK",
+      "visaType": "Standard Visitor",
+      "nationalities": [
+        "IN"
+      ],
+      "officialUrl": "https://www.gov.uk/standard-visitor",
+      "requirements": [
+        {
+          "id": "uk-sv-visa-needed",
+          "revision": 1,
+          "category": "forms",
+          "title": "Visa needed before travel",
+          "detail": "India is on the UK's visa national list. The Immigration Rules say people on this list need a visa before they travel to the UK.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Immigration Rules Appendix Visitor: Visa national list, GOV.UK",
+            "url": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-visitor-visa-national-list"
+          },
+          "sourceQuote": "A person who meets one or more of the criteria below needs entry clearance (a visa) in advance of travel to the UK for any purpose, unless they meet one of the exceptions set out in VN2.1 and VN2.2. (subject to VN 2.3.).",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-permitted-activity",
+          "revision": 1,
+          "category": "purpose",
+          "title": "A permitted reason for the visit",
+          "detail": "GOV.UK lists the activities allowed as a Standard Visitor, including tourism, business, short courses and other permitted activities.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Visit the UK as a Standard Visitor, GOV.UK",
+            "url": "https://www.gov.uk/standard-visitor"
+          },
+          "sourceQuote": "You can visit the UK as a Standard Visitor for tourism, business, study (courses up to 6 months) and other permitted activities.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-no-work",
+          "revision": 1,
+          "category": "purpose",
+          "title": "No work for a UK company",
+          "detail": "GOV.UK lists paid or unpaid work for a UK company, or as a self-employed person, as not allowed, apart from a permitted paid engagement or event.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Visit the UK as a Standard Visitor, GOV.UK",
+            "url": "https://www.gov.uk/standard-visitor"
+          },
+          "sourceQuote": "do paid or unpaid work for a UK company or as a self-employed person, unless you’re doing a permitted paid engagement or event",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-passport",
+          "revision": 1,
+          "category": "identity",
+          "title": "Passport valid for the whole stay",
+          "detail": "GOV.UK says the passport or travel document must be valid for the whole of the stay in the UK.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Apply for a Standard Visitor visa, GOV.UK",
+            "url": "https://www.gov.uk/standard-visitor/apply-standard-visitor-visa"
+          },
+          "sourceQuote": "You must have a passport or travel document that is valid for the whole of your stay in the UK.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-previous-passports",
+          "revision": 1,
+          "category": "travel",
+          "title": "Previous passports with travel history",
+          "detail": "The UK's supporting documents guide lists copies of previous passports that show travel to other countries.",
+          "mandatory": false,
+          "appliesTo": null,
+          "source": {
+            "title": "Visiting the UK: guide to supporting documents, GOV.UK",
+            "url": "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk"
+          },
+          "sourceQuote": "copies of previous passports showing evidence of travel to other countries",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-online-application",
+          "revision": 1,
+          "category": "forms",
+          "title": "Online application before travel",
+          "detail": "GOV.UK says the application is made online before travelling, followed by an appointment at a visa application centre.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Apply for a Standard Visitor visa, GOV.UK",
+            "url": "https://www.gov.uk/standard-visitor/apply-standard-visitor-visa"
+          },
+          "sourceQuote": "If you need a Standard Visitor visa, you must apply online before you travel to the UK and attend an appointment at a visa application centre.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-apply-window",
+          "revision": 1,
+          "category": "travel",
+          "title": "Apply up to 3 months before travel",
+          "detail": "GOV.UK says the earliest an application can be made is 3 months before the travel date.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Apply for a Standard Visitor visa, GOV.UK",
+            "url": "https://www.gov.uk/standard-visitor/apply-standard-visitor-visa"
+          },
+          "sourceQuote": "The earliest you can apply is 3 months before you travel.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-form-details",
+          "revision": 1,
+          "category": "forms",
+          "title": "Details for the online form",
+          "detail": "GOV.UK lists what the online form asks for: travel dates, where you'll stay, the trip's cost, home address, parents' names and dates of birth, yearly income, and any criminal, civil or immigration offences.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Apply for a Standard Visitor visa, GOV.UK",
+            "url": "https://www.gov.uk/standard-visitor/apply-standard-visitor-visa"
+          },
+          "sourceQuote": "You’ll need to provide the following information in your online application:",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-travel-history",
+          "revision": 1,
+          "category": "travel",
+          "title": "Travel history for the past 10 years",
+          "detail": "GOV.UK says some applicants may also need to give their travel history for the past 10 years, depending on their circumstances.",
+          "mandatory": false,
+          "appliesTo": null,
+          "source": {
+            "title": "Apply for a Standard Visitor visa, GOV.UK",
+            "url": "https://www.gov.uk/standard-visitor/apply-standard-visitor-visa"
+          },
+          "sourceQuote": "details of your travel history for the past 10 years",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-translations",
+          "revision": 1,
+          "category": "forms",
+          "title": "Certified translations of non-English documents",
+          "detail": "GOV.UK says any document not in English or Welsh needs a certified translation.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Apply for a Standard Visitor visa, GOV.UK",
+            "url": "https://www.gov.uk/standard-visitor/apply-standard-visitor-visa"
+          },
+          "sourceQuote": "You must provide certified translations of any documents that are not in English or Welsh.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-original-documents",
+          "revision": 1,
+          "category": "forms",
+          "title": "Photos of original documents",
+          "detail": "The UK's supporting documents guide says digital images should be taken of original documents, not copies, wherever possible.",
+          "mandatory": false,
+          "appliesTo": null,
+          "source": {
+            "title": "Visiting the UK: guide to supporting documents, GOV.UK",
+            "url": "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk"
+          },
+          "sourceQuote": "Wherever possible, digital images should be taken of original documents, not copies.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-fee",
+          "revision": 1,
+          "category": "fees",
+          "title": "Visa fee",
+          "detail": "GOV.UK lists the Standard Visitor visa fee as £135 for up to 6 months.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Visit the UK as a Standard Visitor, GOV.UK",
+            "url": "https://www.gov.uk/standard-visitor"
+          },
+          "sourceQuote": "A Standard Visitor visa costs £135 for up to 6 months.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-long-term-option",
+          "revision": 1,
+          "category": "fees",
+          "title": "Long-term visa for regular visitors",
+          "detail": "GOV.UK says regular visitors can choose a long-term Standard Visitor visa lasting 2, 5 or 10 years, at a higher fee.",
+          "mandatory": false,
+          "appliesTo": null,
+          "source": {
+            "title": "Apply for a Standard Visitor visa, GOV.UK",
+            "url": "https://www.gov.uk/standard-visitor/apply-standard-visitor-visa"
+          },
+          "sourceQuote": "You can choose to apply for a long-term Standard Visitor visa if you visit the UK regularly.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-support-yourself",
+          "revision": 1,
+          "category": "money",
+          "title": "Enough money for the trip",
+          "detail": "GOV.UK says applicants must be able to show they can support themselves and any dependants during the trip, or have someone else funding them.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Visit the UK as a Standard Visitor, GOV.UK",
+            "url": "https://www.gov.uk/standard-visitor"
+          },
+          "sourceQuote": "you’re able to support yourself and your dependants during your trip (or have funding from someone else to support you)",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-bank-statements",
+          "revision": 1,
+          "category": "money",
+          "title": "Bank statements showing where funds come from",
+          "detail": "The UK's supporting documents guide lists bank statements that detail the origin of the funds as evidence of having enough money.",
+          "mandatory": false,
+          "appliesTo": null,
+          "source": {
+            "title": "Visiting the UK: guide to supporting documents, GOV.UK",
+            "url": "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk"
+          },
+          "sourceQuote": "bank statements which detail the origin of the funds held",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-sponsor",
+          "revision": 1,
+          "category": "money",
+          "title": "Sponsor's evidence, if someone else pays",
+          "detail": "If someone else pays for travel, living costs or accommodation, the UK's supporting documents guide lists evidence of what they provide, how, their own funds, the relationship, and their legal status in the UK if applicable.",
+          "mandatory": false,
+          "appliesTo": null,
+          "source": {
+            "title": "Visiting the UK: guide to supporting documents, GOV.UK",
+            "url": "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk"
+          },
+          "sourceQuote": "If someone else (your sponsor) is providing your travel, maintenance or accommodation you should provide evidence showing:",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-return-journey",
+          "revision": 1,
+          "category": "travel",
+          "title": "Money for the return journey",
+          "detail": "GOV.UK says applicants must be able to show they can pay for the return or onward journey, or have someone else funding it.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Visit the UK as a Standard Visitor, GOV.UK",
+            "url": "https://www.gov.uk/standard-visitor"
+          },
+          "sourceQuote": "you’re able to pay for your return or onward journey (or have funding from someone else to pay for the journey)",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-leave-at-end",
+          "revision": 1,
+          "category": "ties",
+          "title": "Plans to leave at the end of the visit",
+          "detail": "GOV.UK says applicants must be able to show they will leave the UK at the end of the visit.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Visit the UK as a Standard Visitor, GOV.UK",
+            "url": "https://www.gov.uk/standard-visitor"
+          },
+          "sourceQuote": "you’ll leave the UK at the end of your visit",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-home-circumstances",
+          "revision": 1,
+          "category": "ties",
+          "title": "Home circumstances and visit plans",
+          "detail": "The UK's supporting documents guide recommends giving information about circumstances in the home country and the activity planned in the UK.",
+          "mandatory": false,
+          "appliesTo": null,
+          "source": {
+            "title": "Visiting the UK: guide to supporting documents, GOV.UK",
+            "url": "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk"
+          },
+          "sourceQuote": "It is recommended that you provide information about your circumstances in your home country and details of the activity that you will be doing in the UK.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-employer-letter",
+          "revision": 1,
+          "category": "ties",
+          "title": "Letter from your employer",
+          "detail": "For employed applicants, the UK's supporting documents guide lists a letter on company headed paper giving the role, salary and length of employment.",
+          "mandatory": false,
+          "appliesTo": null,
+          "source": {
+            "title": "Visiting the UK: guide to supporting documents, GOV.UK",
+            "url": "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk"
+          },
+          "sourceQuote": "a letter from your employer on company headed paper, detailing your role, salary and length of employment",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-student-letter",
+          "revision": 1,
+          "category": "ties",
+          "title": "Letter from your school or college",
+          "detail": "For students, the UK's supporting documents guide lists a letter on headed paper from the education provider confirming enrolment and leave of absence.",
+          "mandatory": false,
+          "appliesTo": null,
+          "source": {
+            "title": "Visiting the UK: guide to supporting documents, GOV.UK",
+            "url": "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk"
+          },
+          "sourceQuote": "a letter from your education provider, on headed paper, confirming your enrolment and leave of absence",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-self-employed",
+          "revision": 1,
+          "category": "ties",
+          "title": "Proof of self-employment",
+          "detail": "For self-employed applicants, the UK's supporting documents guide lists business registration documents or recent invoices.",
+          "mandatory": false,
+          "appliesTo": null,
+          "source": {
+            "title": "Visiting the UK: guide to supporting documents, GOV.UK",
+            "url": "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk"
+          },
+          "sourceQuote": "business registration documents or recent invoices that confirm on-going self-employment",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-business-invitation",
+          "revision": 1,
+          "category": "purpose",
+          "title": "Invitation letter for a business event",
+          "detail": "For a business event or conference, the UK's supporting documents guide lists a letter of invitation from the event's organiser.",
+          "mandatory": false,
+          "appliesTo": null,
+          "source": {
+            "title": "Visiting the UK: guide to supporting documents, GOV.UK",
+            "url": "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk"
+          },
+          "sourceQuote": "If you are attending a business event or conference, you should provide a letter of invitation from the organiser of the event you are attending.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-child-relationship",
+          "revision": 1,
+          "category": "identity",
+          "title": "Under 18: proof of relationship to a parent",
+          "detail": "For children under 18, the UK's supporting documents guide lists a legal document showing the relationship to at least one parent or guardian, such as a birth certificate or adoption papers.",
+          "mandatory": false,
+          "appliesTo": null,
+          "source": {
+            "title": "Visiting the UK: guide to supporting documents, GOV.UK",
+            "url": "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk"
+          },
+          "sourceQuote": "You should show a legal document showing the relationship between you and at least 1 of your parents or guardians, for example a birth certificate or adoption papers.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-appointment",
+          "revision": 1,
+          "category": "interview",
+          "title": "Visa application centre appointment",
+          "detail": "GOV.UK says an appointment at a visa application centre is booked as part of the online application.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Apply for a Standard Visitor visa, GOV.UK",
+            "url": "https://www.gov.uk/standard-visitor/apply-standard-visitor-visa"
+          },
+          "sourceQuote": "As part of your online application, you need to book an appointment at a visa application centre.",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        },
+        {
+          "id": "uk-sv-biometrics",
+          "revision": 1,
+          "category": "interview",
+          "title": "Fingerprints and photo at the appointment",
+          "detail": "GOV.UK says fingerprints and a photo are taken at the visa application centre appointment.",
+          "mandatory": true,
+          "appliesTo": null,
+          "source": {
+            "title": "Apply for a Standard Visitor visa, GOV.UK",
+            "url": "https://www.gov.uk/standard-visitor/apply-standard-visitor-visa"
+          },
+          "sourceQuote": "have your fingerprints and a photo (biometric information) taken",
+          "effectiveDate": null,
+          "lastVerified": "2026-10-29"
+        }
+      ]
+    }
+  ]
+}
