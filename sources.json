@@ -1,0 +1,6 @@
+{
+  "www.gov.uk": "govuk-api",
+  "travel.state.gov": "firecrawl",
+  "in.usembassy.gov": "firecrawl",
+  "www.cbp.gov": "firecrawl"
+}

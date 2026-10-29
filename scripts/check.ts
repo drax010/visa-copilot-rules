@@ -1,11 +1,13 @@
 // Usage: node scripts/check.ts <rules.json> [<base rules.json>]
-// Fails when the file breaks the schema. Given the base branch's copy, it also fails when
-// `version` is unchanged, and warns when an item's `detail` changed but its `revision` didn't.
+// Fails when the file breaks the schema, or a title or detail gives advice or promises an
+// outcome (wording.ts). Given the base branch's copy, it also fails when `version` is
+// unchanged, and warns when an item's `detail` changed but its `revision` didn't.
 // Lines starting with :: are GitHub Actions annotations; locally they read as plain text.
 
 import { readFileSync } from "node:fs";
 
 import { type RulesFile, rulesFileSchema } from "../schema.ts";
+import { wordingProblems } from "./wording.ts";
 
 const [file, baseFile] = process.argv.slice(2);
 if (!file) {
@@ -44,6 +46,15 @@ if (!result.success) {
 const rules = result.data;
 console.log(`${file} passes the schema: version ${rules.version}, ${rules.corridors.length} corridor(s).`);
 
+const wording = wordingProblems(rules);
+for (const problem of wording) {
+  console.log(`::error file=${file}::${problem}. Describe what the page says; don't advise or promise.`);
+}
+if (wording.length) {
+  console.log(`\n${file} has ${wording.length} wording problem(s).`);
+  process.exit(1);
+}
+
 if (baseFile) {
   const base = rulesFileSchema.safeParse(readJson(baseFile));
   if (!base.success) {
@@ -54,6 +65,11 @@ if (baseFile) {
 }
 
 function compare(base: RulesFile, next: RulesFile) {
+  // A pull request that only changes scripts or snapshots leaves the rules as they are.
+  if (JSON.stringify(next) === JSON.stringify(base)) {
+    console.log(`${file} is unchanged from the base copy, so its version doesn't need to change.`);
+    return;
+  }
   let failed = false;
   if (next.version === base.version) {
     console.log(`::error file=${file}::version is still ${base.version}. Change it so the app downloads this file.`);

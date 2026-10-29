@@ -1,4 +1,5 @@
-# Checks v1/rules.json on every pull request and every push to main.
+# Checks v1/rules.json on every pull request and every push to main: the scripts' tests,
+# every quote word for word in its page snapshot (snapshots/), the schema and the wording.
 # Pull requests are also compared with the base branch: version must change, and a
 # changed detail without a revision bump gets a warning.
 name: Check rules
@@ -31,6 +32,12 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      - name: Test the scripts
+        run: npm test
+
+      - name: Find every quote word for word in its page snapshot
+        run: node scripts/verify-quotes.ts v1/rules.json
 
       - name: Check against the schema
         if: github.event_name == 'push'

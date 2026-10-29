@@ -1,0 +1,2 @@
+# Snapshots keep LF on every machine, so their sha256 in snapshots/index.json matches the file.
+snapshots/** text eol=lf
