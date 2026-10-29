@@ -103,6 +103,16 @@ test("nothing re-verified, or already verified today, leaves the file and its ve
   assert.equal(again.verified.length, 3);
 });
 
+// Seen on 2026-10-30: bump run a second time on the review branch moved -3 to -4.
+test("bumping again on a review branch keeps the version one step past main's", () => {
+  const first = bumpVerified(rules(), [], new Set([fees]), "2026-11-01", "2026.10.30-2");
+  assert.equal(first.rules.version, "2026.11.01-1");
+
+  const second = bumpVerified(first.rules, [], new Set([visitor]), "2026-11-01", "2026.10.30-2");
+  assert.equal(second.changed, true);
+  assert.equal(second.rules.version, "2026.11.01-1");
+});
+
 const report: Report = {
   month: "2026-11",
   today: "2026-11-01",
@@ -124,6 +134,7 @@ const report: Report = {
 test("the report gives the counts, the version, the checks, the credits left and the run", () => {
   const body = reportBody(report);
 
+  assert.match(body, /Every cited page was fetched again/);
   assert.match(body, /2 of 3 items/);
   assert.match(body, /2026\.10\.30-2 → 2026\.11\.01-1/);
   assert.match(body, /Tests \| Passed/);
@@ -142,6 +153,8 @@ test("the report names each page that wasn't fetched, each missing quote, each c
     checks: [{ name: "Quotes", outcome: "failure" }],
   });
 
+  assert.doesNotMatch(body, /Every cited page was fetched again/);
+  assert.match(body, /1 page couldn't be fetched/);
   assert.match(body, new RegExp(`- ${visitor.replaceAll(".", "\\.")}`));
   assert.match(body, /uk-standard-visitor \/ uk-sv-fee: quote not found in the snapshot/);
   assert.match(body, /\/redraft-rules/);

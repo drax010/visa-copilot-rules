@@ -67,18 +67,45 @@ test("a busy or failing API is retried once", async () => {
   assert.equal(calls.length, 2);
 });
 
-// Seen on 2026-10-30: the visitor page once came back as HTML whose text was empty.
-test("a page whose text is almost empty is retried once, then a failure", async () => {
-  const empty = ok({ rawHtml: "<html><head><script>x()</script></head><body></body></html>", metadata: { statusCode: 200, title: "Visitor Visa" } });
-  const full = ok({ rawHtml: `<p>${"Visitor visas are nonimmigrant visas. ".repeat(10)}</p>`, metadata: { statusCode: 200, title: "Visitor Visa" } });
+// Seen on 2026-10-30, in about 7 of 12 fetches of the visitor page: a blank page with status
+// 200, at random. Fetching again recovers it, so a blank answer gets up to 3 more tries.
+const blank = "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body></body></html>";
+const empty = ok({ rawHtml: blank, metadata: { statusCode: 200, proxyUsed: "basic" } });
+const full = ok({ rawHtml: `<p>${"Visitor visas are nonimmigrant visas. ".repeat(10)}</p>`, metadata: { statusCode: 200, title: "Visitor Visa", proxyUsed: "basic" } });
+const proxyOf = (call: Call) => JSON.parse(String(call.init.body)).proxy;
 
-  const retried = fakeFetch([empty, full]);
-  assert.match(await scrape(page, { key, fetch: retried.fetch, sleep: noWait }), /^Visitor visas/);
-  assert.equal(retried.calls.length, 2);
+test("a page whose text is almost empty is fetched again, asking for the enhanced proxy", async () => {
+  const { calls, fetch } = fakeFetch([empty, full]);
 
-  const twice = fakeFetch([empty, empty]);
-  await assert.rejects(scrape(page, { key, fetch: twice.fetch, sleep: noWait }), /almost empty/);
-  assert.equal(twice.calls.length, 2);
+  assert.match(await scrape(page, { key, fetch, sleep: noWait }), /^Visitor visas/);
+  assert.deepEqual(calls.map(proxyOf), ["auto", "enhanced"]);
+});
+
+test("a page almost empty three times is still saved when the fourth try is whole", async () => {
+  const { calls, fetch } = fakeFetch([empty, empty, empty, full]);
+
+  assert.match(await scrape(page, { key, fetch, sleep: noWait }), /^Visitor visas/);
+  assert.deepEqual(calls.map(proxyOf), ["auto", "enhanced", "enhanced", "enhanced"]);
+});
+
+test("a page almost empty on all 4 tries is a failure that says what came back", async () => {
+  const { calls, fetch } = fakeFetch([empty]);
+
+  await assert.rejects(scrape(page, { key, fetch, sleep: noWait }), (error: Error) => {
+    assert.match(error.message, /almost empty 4 times/);
+    assert.match(error.message, /status 200/);
+    assert.match(error.message, /106 bytes of HTML/);
+    assert.match(error.message, /proxy basic/);
+    return true;
+  });
+  assert.equal(calls.length, 4);
+});
+
+test("a busy API is retried through the same proxy", async () => {
+  const { calls, fetch } = fakeFetch([{ status: 429, body: { success: false, error: "Rate limited" } }, full]);
+
+  await scrape(page, { key, fetch, sleep: noWait });
+  assert.deepEqual(calls.map(proxyOf), ["auto", "auto"]);
 });
 
 test("an API error is reported with its status and message, and never with the key", async () => {
