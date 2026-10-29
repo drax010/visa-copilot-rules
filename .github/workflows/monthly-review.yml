@@ -1,0 +1,117 @@
+# Once a month: fetch every cited page again, check every quote against it, set lastVerified
+# for the items whose quotes were found, and open a "Monthly review" pull request. Merging it
+# is the sign-off; nothing merges by itself. See the README's "Monthly review".
+#
+# GitHub doesn't run check.yml on a pull request opened with the workflow's token, so the
+# same checks run here and their results go in the pull request body.
+name: Monthly review
+
+on:
+  schedule:
+    - cron: "0 6 1 * *" # 06:00 UTC on the 1st of each month, 11:30 in India
+  workflow_dispatch:
+
+permissions:
+  contents: write # push the review branch
+  pull-requests: write # open the pull request
+
+concurrency:
+  group: monthly-review
+  cancel-in-progress: false
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      TZ: Asia/Kolkata # lastVerified and the version use India's date
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - run: npm ci
+
+      - name: Note the start time
+        id: start
+        run: echo "since=$(date -u +%Y-%m-%dT%H:%M:%S.000Z)" >> "$GITHUB_OUTPUT"
+
+      # A page that fails keeps its old snapshot, and its items keep their old dates.
+      - name: Fetch every cited page
+        id: snapshot
+        continue-on-error: true
+        env:
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+        run: npm run snapshot
+
+      - name: Find every quote word for word in its page snapshot
+        id: quotes
+        continue-on-error: true
+        run: npm run verify
+
+      - name: Set lastVerified for the items whose pages were fetched and quotes found
+        env:
+          SINCE: ${{ steps.start.outputs.since }}
+        run: node scripts/review.ts bump --since "$SINCE"
+
+      - name: Test the scripts
+        id: tests
+        continue-on-error: true
+        run: npm test
+
+      - name: Check against the schema and main
+        id: schema
+        continue-on-error: true
+        run: |
+          git show HEAD:v1/rules.json > "$RUNNER_TEMP/base.json"
+          node scripts/check.ts v1/rules.json "$RUNNER_TEMP/base.json"
+
+      # Free; shown so the free plan's 1,000 credits a month can be watched.
+      - name: Count the Firecrawl credits left
+        id: credits
+        continue-on-error: true
+        env:
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+        run: |
+          left=$(curl -sf -H "Authorization: Bearer $FIRECRAWL_API_KEY" https://api.firecrawl.dev/v2/team/credit-usage | jq -r '.data.remainingCredits // empty')
+          echo "left=$left" >> "$GITHUB_OUTPUT"
+
+      - name: Write the pull request body
+        env:
+          SINCE: ${{ steps.start.outputs.since }}
+          CHECKS: "Fetch every page=${{ steps.snapshot.outcome }},Quotes=${{ steps.quotes.outcome }},Tests=${{ steps.tests.outcome }},Schema and version=${{ steps.schema.outcome }}"
+          CREDITS: ${{ steps.credits.outputs.left }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          node scripts/review.ts report --since "$SINCE" --base "$RUNNER_TEMP/base.json" --out "$RUNNER_TEMP/body.md" \
+            --checks "$CHECKS" --credits "$CREDITS" --run "$RUN_URL"
+          cat "$RUNNER_TEMP/body.md" >> "$GITHUB_STEP_SUMMARY"
+
+      # A missing quote opens the pull request as a draft, so it can't be merged by mistake.
+      - name: Open the pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DRAFT: ${{ steps.quotes.outcome != 'success' && '--draft' || '' }}
+        run: |
+          if [ -z "$(git status --porcelain -- v1/rules.json snapshots/)" ]; then
+            echo "Nothing changed, so there is no pull request."
+            exit 0
+          fi
+          month=$(date +%Y-%m)
+          branch="monthly-review/$month-$GITHUB_RUN_NUMBER"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add v1/rules.json snapshots/
+          git commit -m "chore: monthly review $month"
+          git push origin "$branch"
+          gh pr create --base main --head "$branch" --title "Monthly review $month" --body-file "$RUNNER_TEMP/body.md" $DRAFT
+
+      - name: Fail the run if a page, a quote or a check failed
+        if: steps.snapshot.outcome != 'success' || steps.quotes.outcome != 'success' || steps.tests.outcome != 'success' || steps.schema.outcome != 'success'
+        run: |
+          echo "::error::Something needs attention; see the pull request body or this run's summary."
+          exit 1
