@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "2026.10.30-1",
+  "version": "2026.11.01-1",
   "corridors": [
     {
       "id": "us-b1b2",
@@ -167,7 +167,6 @@
             "title": "DS-160: Online Nonimmigrant Visa Application, U.S. Department of State",
             "url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/forms/ds-160-online-nonimmigrant-visa-application.html"
           },
-          "sourceQuote": "Print and keep the DS-160 barcode page.",
           "effectiveDate": null,
           "lastVerified": "2026-10-29"
         },
