@@ -18,10 +18,14 @@ v1 covers two corridors, for Indian passports only: US B-1/B-2 visitor visa and 
 - `snapshots/`: the text of every page the rules cite, one `.txt` file per page, listed in `snapshots/index.json` with how and when each was fetched.
 - `scripts/verify-quotes.ts`: fails unless every `sourceQuote` is found word for word in the snapshot of its `source.url`. CI runs it on every pull request, so a quote that isn't on the page can't merge.
 - `scripts/snapshot.ts` and `sources.json`: fetch the snapshots. GOV.UK pages come from GOV.UK's content API; the US government pages block plain downloads, so they come through Firecrawl (`sources.json` names each host's method).
+- `inbox/`: where to save a page by hand when Firecrawl can't fetch it.
 
 ## Snapshots and the quote check
 
-- `npm run snapshot` refreshes every page whose host has an automatic method. Firecrawl isn't wired in yet; until it is, import a saved copy: `node scripts/snapshot.ts --from <saved .html or .txt> <url> [method]`.
+- `npm run snapshot` refreshes every cited page. Add page addresses after it (`npm run snapshot -- <url> <url>`) to refresh only those.
+- Firecrawl needs an API key: set `FIRECRAWL_API_KEY`, or `FIRECRAWL_KEY_FILE` to the path of a file holding it. Keep the file outside this repo; the key is never printed. Each page costs 1 credit, and the script waits 7 seconds between pages (the free plan allows 10 a minute).
+- A page that fails (an error, a block page, an almost empty answer, or a copy under half the size of its last snapshot) keeps its previous snapshot, and the run exits 1.
+- If Firecrawl can't fetch a page, save it from Chrome into `inbox/` and run `npm run snapshot` again (see `inbox/README.md`), or import it directly: `node scripts/snapshot.ts --from <saved .html or .txt> <url> [method]`.
 - `npm run verify` checks every quote against the snapshots. Whitespace is collapsed and nothing else changes; for PDFs, whitespace is ignored, because PDF text loses spaces at line wraps.
 - `npm test` runs the scripts' tests.
 - After refreshing, `git diff snapshots/` shows what changed on each page.
