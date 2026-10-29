@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "2026.10.30-2",
+  "version": "2026.10.30-3",
   "corridors": [
     {
       "id": "us-b1b2",
@@ -626,7 +626,7 @@
             "title": "Visit the UK as a Standard Visitor, GOV.UK",
             "url": "https://www.gov.uk/standard-visitor"
           },
-          "sourceQuote": "A Standard Visitor visa costs £135 for up to 6 months.",
+          "sourceQuote": "A Standard Visitor visa costs £125 for up to 6 months.",
           "effectiveDate": null,
           "lastVerified": "2026-10-29"
         },
