@@ -1,9 +1,10 @@
 // Fetches one page through Firecrawl (https://docs.firecrawl.dev/api-reference/endpoint/scrape).
 // The US government pages block plain downloads; Firecrawl's "auto" proxy retries through its
-// enhanced proxies when a site answers 401, 403 or 429. But travel.state.gov often gives the
-// basic proxy a blank page with status 200 (4 of 5 fetches on 2026-10-30), which "auto" doesn't
-// retry, so an almost empty answer is fetched again with "enhanced". maxAge 0 skips Firecrawl's
-// 2-day cache.
+// enhanced proxies when a site answers 401, 403 or 429. But travel.state.gov often answers with
+// a blank page and status 200 (about 7 of 12 fetches on 2026-10-30, at random), which "auto"
+// doesn't retry. Fetching again recovers it, so an almost empty answer gets up to 3 more tries.
+// They ask for "enhanced", which costs the same; Firecrawl still reported "basic" for the one
+// that worked, so it isn't known whether that helps. maxAge 0 skips Firecrawl's 2-day cache.
 // Web pages come back as raw HTML (Firecrawl's markdown splits sentences, which breaks quote
 // matching); PDFs as markdown, which is their extracted text. 1 credit per page.
 
@@ -14,6 +15,8 @@ const endpoint = "https://api.firecrawl.dev/v2/scrape";
 const blockPage = /Attention Required|Just a moment|Technical Difficulties|Access denied|Content modified/i;
 // The smallest cited page, the CBP bulletin, is about 1,900 characters of text.
 const minText = 200;
+// Tries for a page that keeps coming back almost empty: at 7 in 12, 4 tries fail about 1 time in 9.
+const emptyTries = 4;
 
 type Options = { key: string; fetch?: typeof fetch; sleep?: (ms: number) => Promise<void> };
 
@@ -28,12 +31,14 @@ export async function scrape(url: string, { key, fetch = globalThis.fetch, sleep
     });
   const fail = (message: string) => new Error(message.replaceAll(key, "[key]"));
 
-  // A busy API (429, 5xx) gets one more try through the same proxy, an almost empty page one more
-  // through the enhanced proxy; anything else fails at once.
+  // A busy API (429, 5xx) gets one more try through the same proxy, an almost empty page up to
+  // emptyTries in all; anything else fails at once.
   let proxy = "auto";
-  for (let attempt = 1; ; attempt++) {
+  let busyRetried = false;
+  for (let tries = 1; ; ) {
     const res = await request(proxy);
-    if ((res.status === 429 || res.status >= 500) && attempt === 1) {
+    if ((res.status === 429 || res.status >= 500) && !busyRetried) {
+      busyRetried = true;
       await sleep(10000);
       continue;
     }
@@ -48,12 +53,13 @@ export async function scrape(url: string, { key, fetch = globalThis.fetch, sleep
     const content: unknown = pdf ? body.data?.markdown : body.data?.rawHtml;
     const text = typeof content !== "string" ? "" : pdf ? content.trim() : htmlToText(content);
     if (text.length >= minText) return text;
-    if (attempt === 1) {
+    if (tries < emptyTries) {
+      tries++;
       proxy = "enhanced";
       await sleep(10000);
       continue;
     }
     const size = typeof content === "string" ? content.length : 0;
-    throw fail(`${url} came back almost empty twice (${text.length} characters of text; last answer: status ${meta.statusCode}, ${size} bytes of ${pdf ? "markdown" : "HTML"}, proxy ${meta.proxyUsed ?? "unknown"})`);
+    throw fail(`${url} came back almost empty ${emptyTries} times (${text.length} characters of text; last answer: status ${meta.statusCode}, ${size} bytes of ${pdf ? "markdown" : "HTML"}, proxy ${meta.proxyUsed ?? "unknown"})`);
   }
 }

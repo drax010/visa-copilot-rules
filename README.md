@@ -25,7 +25,7 @@ v1 covers two corridors, for Indian passports only: US B-1/B-2 visitor visa and 
 
 - `npm run snapshot` refreshes every cited page. Add page addresses after it (`npm run snapshot -- <url> <url>`) to refresh only those.
 - Firecrawl needs an API key: set `FIRECRAWL_API_KEY`, or `FIRECRAWL_KEY_FILE` to the path of a file holding it. Keep the file outside this repo; the key is never printed. Each page costs 1 credit, and the script waits 7 seconds between pages (the free plan allows 10 a minute).
-- An almost empty answer is fetched once more through Firecrawl's enhanced proxy: travel.state.gov often gives the basic proxy a blank page with status 200, which `proxy: "auto"` doesn't retry.
+- An almost empty answer gets up to 3 more tries, 10 seconds apart, each costing 1 credit. travel.state.gov often answers with a blank page and status 200, at random (about 7 of 12 fetches on 2026-10-30), and `proxy: "auto"` doesn't retry that. Fetching again recovers it. The extra tries ask for Firecrawl's enhanced proxy, though it isn't known whether that helps.
 - A page that fails (an error, a block page, an answer still almost empty, or a copy under half the size of its last snapshot) keeps its previous snapshot, and the run exits 1.
 - If Firecrawl can't fetch a page, save it from Chrome into `inbox/` and run `npm run snapshot` again (see `inbox/README.md`), or import it directly: `node scripts/snapshot.ts --from <saved .html or .txt> <url> [method]`.
 - `npm run verify` checks every quote against the snapshots. Whitespace is collapsed and nothing else changes; for PDFs, whitespace is ignored, because PDF text loses spaces at line wraps.
