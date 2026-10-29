@@ -1,1 +1,4 @@
 node_modules/
+# Pages saved by hand for import (see inbox/README.md); never committed.
+inbox/*
+!inbox/README.md
