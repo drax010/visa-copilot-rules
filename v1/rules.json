@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "2026.10.30-3",
+  "version": "2026.10.30-4",
   "corridors": [
     {
       "id": "us-b1b2",
@@ -41,7 +41,7 @@
           },
           "sourceQuote": "Visitor visas are nonimmigrant visas for persons who want to enter the United States temporarily for business (B-1 visa), for tourism (B-2 visa), or for a combination of both purposes (B-1/B-2 visa).",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-no-work",
@@ -57,7 +57,7 @@
           },
           "sourceQuote": "An individual on a visitor visa (B1/B2) is not permitted to accept employment or work in the United States.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-passport",
@@ -185,7 +185,7 @@
           },
           "sourceQuote": "Each individual who needs a visa must submit a separate application, including any family members listed in your passport.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-fee",
@@ -233,7 +233,7 @@
           },
           "sourceQuote": "Application fee payment receipt, if you are required to pay before your interview.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-additional-documents",
@@ -249,7 +249,7 @@
           },
           "sourceQuote": "Additional documents may be requested to establish if you are qualified.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-funds",
@@ -265,7 +265,7 @@
           },
           "sourceQuote": "Your ability to pay all costs of the trip.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-sponsor",
@@ -281,7 +281,7 @@
           },
           "sourceQuote": "If you cannot cover all the costs for your trip, you may show evidence that another person will cover some or all costs for your trip.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-ties",
@@ -297,7 +297,7 @@
           },
           "sourceQuote": "Evidence of your employment and/or your family ties may be sufficient to show the purpose of your trip and your intent to return to your home country.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-invitation-not-needed",
@@ -313,7 +313,7 @@
           },
           "sourceQuote": "A letter of invitation or Affidavit of Support is not needed to apply for a visitor visa.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-apply-early",
@@ -329,7 +329,7 @@
           },
           "sourceQuote": "Wait times for interview appointments vary by location, season, and visa category, so you should apply for your visa early.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-no-tickets-yet",
@@ -345,7 +345,7 @@
           },
           "sourceQuote": "Do not make final travel plans or buy tickets until you have a visa.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-schedule-interview",
@@ -393,7 +393,7 @@
           },
           "sourceQuote": "Interviews are generally required for visa applicants with certain limited exceptions.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-fingerprints",
@@ -409,7 +409,7 @@
           },
           "sourceQuote": "Ink-free, digital fingerprint scans are taken as part of the application process.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-photo-print",
@@ -425,7 +425,7 @@
           },
           "sourceQuote": "If the photo upload fails, you must bring one printed photo in the format explained in the Photograph Requirements.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         }
       ]
     },
