@@ -3,8 +3,8 @@
     "file": "in.usembassy.gov/visas.txt",
     "kind": "html",
     "method": "firecrawl",
-    "fetchedAt": "2026-10-29T22:42:19.468Z",
-    "sha256": "811f137efe680f5f9012e38c45e8e828eec7898130732959008c9644612deda8"
+    "fetchedAt": "2026-10-29T23:14:11.426Z",
+    "sha256": "54ee90884907a0300684e90de0013fd5d0c341d09ef162450aa5fe4c8062fea1"
   },
   "https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html": {
     "file": "travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.txt",
@@ -17,56 +17,56 @@
     "file": "travel.state.gov/content/travel/en/us-visas/visa-information-resources/fees/fees-visa-services.txt",
     "kind": "html",
     "method": "firecrawl",
-    "fetchedAt": "2026-10-29T22:42:44.770Z",
+    "fetchedAt": "2026-10-29T23:14:27.557Z",
     "sha256": "59e6e21317afddc6f23155946e10fc2e4eb31fef72ba5af86c5fd524b6dc09ac"
   },
   "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/forms/ds-160-online-nonimmigrant-visa-application.html": {
     "file": "travel.state.gov/content/travel/en/us-visas/visa-information-resources/forms/ds-160-online-nonimmigrant-visa-application.txt",
     "kind": "html",
     "method": "firecrawl",
-    "fetchedAt": "2026-10-29T22:42:47.381Z",
+    "fetchedAt": "2026-10-29T23:14:34.691Z",
     "sha256": "c74b3e8804510155c513040e68b677af26a5bc448d6645c85562e9f2c7a42481"
   },
   "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos.html": {
     "file": "travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos.txt",
     "kind": "html",
     "method": "firecrawl",
-    "fetchedAt": "2026-10-29T22:42:54.348Z",
+    "fetchedAt": "2026-10-29T23:14:44.159Z",
     "sha256": "8c6647e0032f88fbfda4f7056c530d0016e6a890f614af02fb8eff13fb16eca3"
   },
   "https://www.cbp.gov/sites/default/files/2025-12/Six-Month%20Passport%20Validity%20Update%2020251218.pdf": {
     "file": "www.cbp.gov/sites/default/files/2025-12/Six-Month-Passport-Validity-Update-20251218.txt",
     "kind": "pdf",
     "method": "firecrawl",
-    "fetchedAt": "2026-10-29T22:43:00.056Z",
+    "fetchedAt": "2026-10-29T23:14:47.513Z",
     "sha256": "3c38238cecd55c2c5d8d7a0437d4bf4e9fe4d033aa92c765bf8ab4636b3f3ef6"
   },
   "https://www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk": {
     "file": "www.gov.uk/government/publications/visitor-visa-guide-to-supporting-documents/guide-to-supporting-documents-visiting-the-uk.txt",
     "kind": "html",
     "method": "govuk-api",
-    "fetchedAt": "2026-10-29T22:43:01.141Z",
+    "fetchedAt": "2026-10-29T23:14:47.822Z",
     "sha256": "b95659b66b230cdc0c9a61b900f7834ab0f00af69a845e5e4f39a3fba143da04"
   },
   "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-visitor-visa-national-list": {
     "file": "www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-visitor-visa-national-list.txt",
     "kind": "html",
     "method": "govuk-api",
-    "fetchedAt": "2026-10-29T22:43:02.098Z",
+    "fetchedAt": "2026-10-29T23:14:48.617Z",
     "sha256": "26a497c9d50884afef1be9568d91a66911bb30be0fea3013a1d8f47d9507b20e"
   },
   "https://www.gov.uk/standard-visitor": {
     "file": "www.gov.uk/standard-visitor.txt",
     "kind": "html",
     "method": "govuk-api",
-    "fetchedAt": "2026-10-29T22:43:02.909Z",
+    "fetchedAt": "2026-10-29T23:14:49.729Z",
     "sha256": "7f07baf54a8aef023bc1b1f1f378754f4cc14310fd035bc4a5a8d772ef93295a"
   },
   "https://www.gov.uk/standard-visitor/apply-standard-visitor-visa": {
     "file": "www.gov.uk/standard-visitor/apply-standard-visitor-visa.txt",
     "kind": "html",
     "method": "govuk-api",
-    "fetchedAt": "2026-10-29T22:43:03.920Z",
+    "fetchedAt": "2026-10-29T23:14:50.392Z",
     "sha256": "ea9fe171e721c7efc84cd3003478034b1a7770965875928e2ecf2010738636d8"
   }
 }

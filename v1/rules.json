@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "2026.10.30-2",
+  "version": "2026.10.30-3",
   "corridors": [
     {
       "id": "us-b1b2",
@@ -25,7 +25,7 @@
           },
           "sourceQuote": "A citizen of a foreign country who seeks to enter the United States generally must first obtain a U.S. visa, which is placed in the traveler’s passport.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-permitted-purpose",
@@ -89,7 +89,7 @@
           },
           "sourceQuote": "If you are applying for a nonimmigrant visa by filling out the DS-160 or DS-1648 online form, the form will instruct you to upload your digital image as part of completing the online visa application form.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-photo-recent",
@@ -105,7 +105,7 @@
           },
           "sourceQuote": "Taken within the last 6 months to reflect your current appearance",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-photo-background",
@@ -121,7 +121,7 @@
           },
           "sourceQuote": "Taken in front of a plain white or off-white background",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-photo-no-glasses",
@@ -137,7 +137,7 @@
           },
           "sourceQuote": "Eyeglasses are no longer allowed in new visa photos, except in rare circumstances when eyeglasses cannot be removed for medical reasons; e.g., the applicant has recently had ocular surgery and the eyeglasses are necessary to protect the applicant's eyes.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-ds160",
@@ -153,7 +153,7 @@
           },
           "sourceQuote": "Visa applicants must submit a completed DS-160, Online Nonimmigrant Visa Application for all nonimmigrant visa categories, including applicants applying for K visas.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-ds160-barcode",
@@ -169,7 +169,7 @@
           },
           "sourceQuote": "Print and keep the DS-160 barcode page.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-separate-application",
@@ -201,7 +201,7 @@
           },
           "sourceQuote": "Non-petition-based nonimmigrant visa (except E): $185.00",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-fee-rupees",
@@ -217,7 +217,7 @@
           },
           "sourceQuote": "As of May 25, 2026 the Consular Exchange Rate will change for 1 dollar from 96 Indian rupees to 98 rupees.",
           "effectiveDate": "2026-05-25",
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-fee-receipt",
@@ -361,7 +361,7 @@
           },
           "sourceQuote": "You must schedule a visa interview appointment.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-interview-location",
@@ -377,7 +377,7 @@
           },
           "sourceQuote": "Applicants for U.S. nonimmigrant visas should schedule their visa interview appointments at the U.S. Embassy or Consulate in their country of residence or nationality.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "us-b1b2-interview",
@@ -452,7 +452,7 @@
           },
           "sourceQuote": "A person who meets one or more of the criteria below needs entry clearance (a visa) in advance of travel to the UK for any purpose, unless they meet one of the exceptions set out in VN2.1 and VN2.2. (subject to VN 2.3.).",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-permitted-activity",
@@ -468,7 +468,7 @@
           },
           "sourceQuote": "You can visit the UK as a Standard Visitor for tourism, business, study (courses up to 6 months) and other permitted activities.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-no-work",
@@ -484,7 +484,7 @@
           },
           "sourceQuote": "do paid or unpaid work for a UK company or as a self-employed person, unless you’re doing a permitted paid engagement or event",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-passport",
@@ -500,7 +500,7 @@
           },
           "sourceQuote": "You must have a passport or travel document that is valid for the whole of your stay in the UK.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-previous-passports",
@@ -516,7 +516,7 @@
           },
           "sourceQuote": "copies of previous passports showing evidence of travel to other countries",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-online-application",
@@ -532,7 +532,7 @@
           },
           "sourceQuote": "If you need a Standard Visitor visa, you must apply online before you travel to the UK and attend an appointment at a visa application centre.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-apply-window",
@@ -548,7 +548,7 @@
           },
           "sourceQuote": "The earliest you can apply is 3 months before you travel.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-form-details",
@@ -564,7 +564,7 @@
           },
           "sourceQuote": "You’ll need to provide the following information in your online application:",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-travel-history",
@@ -580,7 +580,7 @@
           },
           "sourceQuote": "details of your travel history for the past 10 years",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-translations",
@@ -596,7 +596,7 @@
           },
           "sourceQuote": "You must provide certified translations of any documents that are not in English or Welsh.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-original-documents",
@@ -612,7 +612,7 @@
           },
           "sourceQuote": "Wherever possible, digital images should be taken of original documents, not copies.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-fee",
@@ -628,7 +628,7 @@
           },
           "sourceQuote": "A Standard Visitor visa costs £135 for up to 6 months.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-long-term-option",
@@ -644,7 +644,7 @@
           },
           "sourceQuote": "You can choose to apply for a long-term Standard Visitor visa if you visit the UK regularly.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-support-yourself",
@@ -660,7 +660,7 @@
           },
           "sourceQuote": "you’re able to support yourself and your dependants during your trip (or have funding from someone else to support you)",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-bank-statements",
@@ -676,7 +676,7 @@
           },
           "sourceQuote": "bank statements which detail the origin of the funds held",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-sponsor",
@@ -692,7 +692,7 @@
           },
           "sourceQuote": "If someone else (your sponsor) is providing your travel, maintenance or accommodation you should provide evidence showing:",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-return-journey",
@@ -708,7 +708,7 @@
           },
           "sourceQuote": "you’re able to pay for your return or onward journey (or have funding from someone else to pay for the journey)",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-leave-at-end",
@@ -724,7 +724,7 @@
           },
           "sourceQuote": "you’ll leave the UK at the end of your visit",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-home-circumstances",
@@ -740,7 +740,7 @@
           },
           "sourceQuote": "It is recommended that you provide information about your circumstances in your home country and details of the activity that you will be doing in the UK.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-employer-letter",
@@ -756,7 +756,7 @@
           },
           "sourceQuote": "a letter from your employer on company headed paper, detailing your role, salary and length of employment",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-student-letter",
@@ -772,7 +772,7 @@
           },
           "sourceQuote": "a letter from your education provider, on headed paper, confirming your enrolment and leave of absence",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-self-employed",
@@ -788,7 +788,7 @@
           },
           "sourceQuote": "business registration documents or recent invoices that confirm on-going self-employment",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-business-invitation",
@@ -804,7 +804,7 @@
           },
           "sourceQuote": "If you are attending a business event or conference, you should provide a letter of invitation from the organiser of the event you are attending.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-child-relationship",
@@ -820,7 +820,7 @@
           },
           "sourceQuote": "You should show a legal document showing the relationship between you and at least 1 of your parents or guardians, for example a birth certificate or adoption papers.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-appointment",
@@ -836,7 +836,7 @@
           },
           "sourceQuote": "As part of your online application, you need to book an appointment at a visa application centre.",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         },
         {
           "id": "uk-sv-biometrics",
@@ -852,7 +852,7 @@
           },
           "sourceQuote": "have your fingerprints and a photo (biometric information) taken",
           "effectiveDate": null,
-          "lastVerified": "2026-10-29"
+          "lastVerified": "2026-10-30"
         }
       ]
     }
